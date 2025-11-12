@@ -17,3 +17,8 @@ output "website_url" {
   description = "Website URL"
   value       = "https://${local.subdomain}"
 }
+
+output "cloudfront_domain_name" {
+  description = "CloudFront distribution domain name"
+  value       = module.cloudfront.distribution_domain_name
+}
