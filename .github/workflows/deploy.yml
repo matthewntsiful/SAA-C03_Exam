@@ -147,4 +147,4 @@ jobs:
 
       - name: Terraform Plan
         working-directory: ./infrastructure/terraform/environments/prod
-        run: terraform plan -no-color
+        run: terraform plan -no-color 
