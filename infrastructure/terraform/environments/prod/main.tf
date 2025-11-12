@@ -2,11 +2,15 @@ terraform {
   required_version = ">= 1.9"
   
   backend "s3" {
-    bucket         = "saa-exams-terraform-state"
-    key            = "prod/terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-    dynamodb_table = "terraform-state-locks"
+    bucket  = "saa-exams-terraform-state"
+    key     = "prod/terraform.tfstate"
+    region  = "us-east-1"
+    encrypt = true
+    
+    skip_requesting_account_id  = true
+    skip_metadata_api_check     = true
+    skip_region_validation      = true
+    use_lockfile                = true
   }
   
   required_providers {
