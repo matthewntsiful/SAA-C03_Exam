@@ -1,0 +1,11 @@
+# Code owners for pull request reviews
+
+# Infrastructure changes require approval
+/infrastructure/ @your-github-username
+
+# Website changes
+/website/ @your-github-username
+
+# Documentation
+/docs/ @your-github-username
+*.md @your-github-username

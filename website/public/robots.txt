@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /exams/
+
+Sitemap: https://aws-exams.matthewntsiful.com/sitemap.xml
