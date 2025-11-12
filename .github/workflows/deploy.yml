@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./website
-        run: npm ci
+        run: npm install
 
       - name: Generate static site
         working-directory: ./website
