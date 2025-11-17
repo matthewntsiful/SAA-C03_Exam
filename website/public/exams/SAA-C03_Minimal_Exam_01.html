@@ -192,7 +192,7 @@
             generateNav() {
                 const nav = document.getElementById('questionNav');
                 nav.innerHTML = this.questions.map((_, i) => 
-                    `<button onclick="exam.goTo(${i})" class="w-10 h-10 rounded-lg border-2 transition-colors text-sm font-medium flex items-center justify-center" id="nav-${i}">${i + 1}</button>`
+                    `<button onclick="exam.goTo(${i})" class="w-10 h-10 rounded-lg border-2 transition-colors text-sm font-medium flex items-center justify-center" id="nav-${i}"></button>`
                 ).join('');
                 this.updateNav();
             }
@@ -200,11 +200,23 @@
             updateNav() {
                 this.questions.forEach((_, i) => {
                     const btn = document.getElementById(`nav-${i}`);
-                    btn.className = 'w-10 h-10 rounded-lg border-2 transition-colors text-sm font-medium flex items-center justify-center';
-                    if (i === this.currentQuestion) btn.className += ' bg-aws-orange text-white border-aws-orange';
-                    else if (this.answers[i]) btn.className += ' bg-green-500 text-white border-green-500';
-                    else if (this.flagged.has(i)) btn.className += ' bg-yellow-500 text-white border-yellow-500';
-                    else btn.className += ' border-gray-300 dark:border-gray-700 hover:border-aws-orange';
+                    btn.className = 'w-10 h-10 rounded-lg border-2 transition-colors text-sm font-medium flex items-center justify-center relative';
+                    
+                    if (i === this.currentQuestion) {
+                        btn.className += ' bg-aws-orange text-white border-aws-orange';
+                    } else if (this.answers[i] && this.flagged.has(i)) {
+                        btn.className += ' bg-green-500 text-white border-green-500';
+                        btn.innerHTML = `${i + 1}<span class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border border-white"></span>`;
+                    } else if (this.answers[i]) {
+                        btn.className += ' bg-green-500 text-white border-green-500';
+                        btn.innerHTML = `${i + 1}`;
+                    } else if (this.flagged.has(i)) {
+                        btn.className += ' bg-yellow-500 text-white border-yellow-500';
+                        btn.innerHTML = `${i + 1}`;
+                    } else {
+                        btn.className += ' border-gray-300 dark:border-gray-700 hover:border-aws-orange';
+                        btn.innerHTML = `${i + 1}`;
+                    }
                 });
                 const answered = Object.keys(this.answers).length;
                 document.getElementById('progressText').textContent = `${answered} of ${this.questions.length} answered`;
