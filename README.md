@@ -3,8 +3,8 @@
 > Complete practice exam application for AWS Solutions Architect Associate certification preparation.
 
 [![AWS](https://img.shields.io/badge/AWS-SAA--C03-orange)](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
-[![Node.js](https://img.shields.io/badge/Node.js-14+-green)](https://nodejs.org/)
-[![Terraform](https://img.shields.io/badge/Terraform-1.0+-purple)](https://www.terraform.io/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
+[![Terraform](https://img.shields.io/badge/Terraform-1.9+-purple)](https://www.terraform.io/)
 
 ## ✨ Features
 
@@ -57,27 +57,43 @@ terraform apply
 
 **Deploy to dev/prod:**
 ```bash
-cd infrastructure/terraform/environments/prod
+cd infrastructure/terraform/environments/dev  # or prod
 terraform init
 terraform apply
 ```
+
+**Automated deployment via GitHub Actions:**
+- Push to `develop` → deploys to dev environment
+- Push to `main` → deploys to production
+- Pull requests → runs terraform plan
 
 ## 📁 Project Structure
 
 ```
 SAA-C03_Exam/
-├── website/              # Application code
-│   ├── server.js        # Express server
-│   ├── views/           # EJS templates
-│   └── public/          # Static files
-│       └── exams/       # 16 exam HTML files
-├── infrastructure/       # Terraform IaC
-│   └── terraform/       # AWS resources
-├── docs/                # Documentation
-│   ├── FEATURES.md      # Complete feature list
-│   ├── DEPLOYMENT.md    # Deployment guide
-│   └── PROJECT_STRUCTURE.md
-└── README.md            # This file
+├── website/                    # Application code
+│   ├── server.js              # Express server
+│   ├── package.json           # Dependencies (Node 18+)
+│   ├── views/                 # EJS templates
+│   │   └── minimal.ejs        # Landing page
+│   ├── public/                # Static files
+│   │   ├── exams/             # 16 exam HTML files
+│   │   ├── js/                # Shared JavaScript
+│   │   └── assets/            # Icons, manifest
+│   └── scripts/               # Build/deploy scripts
+├── infrastructure/             # Terraform IaC
+│   └── terraform/             # AWS resources
+│       ├── modules/           # Reusable modules
+│       ├── environments/      # dev/prod configs
+│       └── backend/           # Remote state setup
+├── .github/workflows/         # CI/CD pipeline
+├── docs/                      # Documentation
+│   ├── FEATURES.md           # Complete feature list
+│   ├── DEPLOYMENT.md         # Deployment guide
+│   └── PROJECT_STRUCTURE.md  # Detailed structure
+├── scripts-legacy/            # Legacy Python utilities
+├── QUICK_START.md            # 30-second start guide
+└── README.md                 # This file
 ```
 
 ## 📚 Documentation
@@ -110,11 +126,12 @@ SAA-C03_Exam/
 **Infrastructure:**
 - Terraform 1.9+ (AWS Provider 6.20)
 - AWS S3 (versioned, encrypted, logged)
-- AWS CloudFront (cache policies, security headers)
+- AWS CloudFront (cache policies, security headers, OAC)
 - AWS Route53 (DNS + SSL certificates)
 - AWS WAF (rate limiting, managed rules)
 - AWS CloudWatch (alarms, monitoring)
 - DynamoDB (Terraform state locking)
+- GitHub OIDC (secure CI/CD authentication)
 
 ## 📊 Exam Content
 
@@ -138,9 +155,10 @@ SAA-C03_Exam/
 
 ## 🚀 Deployment Options
 
-1. **Local** - Run with Node.js
-2. **AWS** - S3 + CloudFront (Terraform)
-3. **Static Hosting** - Netlify, Vercel, GitHub Pages
+1. **Local Development** - `npm run dev` (Node.js 18+)
+2. **AWS Production** - S3 + CloudFront (Terraform)
+3. **CI/CD Pipeline** - GitHub Actions (automated)
+4. **Static Hosting** - Netlify, Vercel, GitHub Pages
 
 ## 💰 AWS Cost Estimate
 
@@ -176,6 +194,29 @@ SAA-C03_Exam/
 - Security headers (HSTS, X-Frame-Options, XSS Protection)
 - Access logging (S3 + CloudFront)
 
+## 🌐 Current Deployment Status
+
+### Infrastructure State
+- **Backend**: Terraform state in S3 with DynamoDB locking ✅
+- **Dev Environment**: Deployed and functional ✅
+- **Prod Environment**: Deployed and functional ✅
+- **CI/CD Pipeline**: GitHub Actions configured ✅
+- **Monitoring**: CloudWatch alarms active ✅
+
+### Environment Details
+- **Dev**: `develop` branch → auto-deploy to dev environment
+- **Prod**: `main` branch → auto-deploy to production
+- **Terraform**: v1.9.0 with AWS Provider v6.20
+- **Node.js**: v18+ required for local development
+
+### Active AWS Resources
+- S3 buckets (content + logs)
+- CloudFront distributions
+- Route53 hosted zones
+- WAF web ACLs
+- CloudWatch alarms
+- IAM roles for GitHub OIDC
+
 ## 📝 License
 
 Educational use only. AWS and SAA-C03 are trademarks of Amazon Web Services.
@@ -190,33 +231,48 @@ Contributions welcome for:
 
 ## 📞 Support
 
-For issues:
-1. Check browser console
-2. Clear localStorage
+### Application Issues
+1. Check browser console (F12)
+2. Clear localStorage: `localStorage.clear()`
 3. Try different browser
-4. Review documentation
+4. Review [QUICK_START.md](QUICK_START.md)
+
+### Infrastructure Issues
+1. Check GitHub Actions logs
+2. Review Terraform state
+3. Verify AWS credentials
+4. Check [DEPLOYMENT.md](docs/DEPLOYMENT.md)
+
+### Development Setup
+1. Ensure Node.js 18+ installed
+2. Run `npm install` in website directory
+3. Use `npm run dev` for development
+4. Check [PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)
 
 ---
 
 ## 🏆 AWS Best Practices Implemented
 
-- ✅ Remote state management with locking
-- ✅ S3 encryption, versioning, and logging
-- ✅ Modern CloudFront cache policies
+- ✅ Remote state management with DynamoDB locking
+- ✅ S3 encryption, versioning, and access logging
+- ✅ Modern CloudFront cache policies with OAC
 - ✅ Security headers (HSTS, CSP, X-Frame-Options)
-- ✅ CloudWatch monitoring and alarms
-- ✅ Cost optimization with lifecycle policies
-- ✅ WAF protection against common attacks
+- ✅ CloudWatch monitoring and custom alarms
+- ✅ Cost optimization with S3 lifecycle policies
+- ✅ WAF protection with rate limiting
 - ✅ TLS 1.2+ minimum encryption
-- ✅ Infrastructure as Code (Terraform)
+- ✅ Infrastructure as Code (Terraform 1.9+)
 - ✅ Multi-environment support (dev/prod)
 - ✅ CI/CD pipeline with GitHub Actions
-- ✅ Automated testing and validation
+- ✅ GitHub OIDC for secure deployments
+- ✅ Automated invalidation and deployment
 
 ---
 
-**Status**: ✅ Production Ready  
-**Version**: 2.0.0  
-**Last Updated**: November 2024
+**Status**: ✅ Production Ready & Deployed  
+**Version**: 2.1.0  
+**Infrastructure**: Terraform 1.9+ | AWS Provider 6.20  
+**Runtime**: Node.js 18+ | Express 4.18+  
+**Last Updated**: December 2024
 
 **Good luck with your AWS certification! 🎉**
