@@ -356,9 +356,15 @@
                 progress[EXAM_ID].timeTaken = timeTaken;
                 progress[EXAM_ID].lastTaken = Date.now();
                 progress[EXAM_ID].attempts = (progress[EXAM_ID].attempts || 0) + 1;
+                if (!progress[EXAM_ID].scores) progress[EXAM_ID].scores = [];
                 progress[EXAM_ID].scores.push(score);
                 progress[EXAM_ID].results = results;
                 localStorage.setItem('examProgress', JSON.stringify(progress));
+                
+                // Trigger progress update on main page
+                if (window.examProgress) {
+                    window.examProgress.updateExamProgress(EXAM_ID, score, true);
+                }
             }
 
             showReview() {
