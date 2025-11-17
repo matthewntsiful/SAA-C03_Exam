@@ -6,6 +6,8 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
 [![Terraform](https://img.shields.io/badge/Terraform-1.9+-purple)](https://www.terraform.io/)
 
+🌐 **[Live Production App](https://saa-c03-exam.com)** | 📊 **[Dev Environment](https://dev.saa-c03-exam.com)**
+
 ## ✨ Features
 
 ### 🎯 Exam Features
