@@ -14,12 +14,15 @@ class ExamProgress {
     }
 
     updateExamProgress(examId, score, completed = false) {
-        this.progress[examId] = {
-            score: score,
-            completed: completed,
-            lastTaken: new Date().toISOString(),
-            attempts: (this.progress[examId]?.attempts || 0) + 1
-        };
+        if (!this.progress[examId]) {
+            this.progress[examId] = { attempts: 0, scores: [] };
+        }
+        this.progress[examId].score = score;
+        this.progress[examId].completed = completed;
+        this.progress[examId].lastTaken = new Date().toISOString();
+        this.progress[examId].attempts = (this.progress[examId].attempts || 0) + 1;
+        this.progress[examId].scores = this.progress[examId].scores || [];
+        this.progress[examId].scores.push(score);
         this.saveProgress();
         this.updateUI();
     }
