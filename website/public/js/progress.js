@@ -14,6 +14,7 @@ class ExamProgress {
     }
 
     updateExamProgress(examId, score, completed = false) {
+        console.log(`Updating exam ${examId}: score=${score}, completed=${completed}`);
         if (!this.progress[examId]) {
             this.progress[examId] = { attempts: 0, scores: [] };
         }
