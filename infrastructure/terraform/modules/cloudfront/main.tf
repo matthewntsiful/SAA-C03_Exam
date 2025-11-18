@@ -1,7 +1,7 @@
 resource "aws_cloudfront_cache_policy" "exam_cache_policy" {
   name        = "${var.s3_bucket_name}-cache-policy"
   min_ttl     = 0
-  default_ttl = 3600
+  default_ttl = 300
   max_ttl     = 86400
 
   parameters_in_cache_key_and_forwarded_to_origin {

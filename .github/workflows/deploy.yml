@@ -80,7 +80,7 @@ jobs:
         run: |
           aws s3 sync website/public/ s3://saa-exams-dev-24b4775a/ \
             --delete \
-            --cache-control "public, max-age=3600"
+            --cache-control "public, max-age=300"
 
       - name: Invalidate CloudFront
         run: |
@@ -114,7 +114,7 @@ jobs:
         run: |
           aws s3 sync website/public/ s3://saa-exams-prod-dd94466b/ \
             --delete \
-            --cache-control "public, max-age=3600"
+            --cache-control "public, max-age=300"
 
       - name: Invalidate CloudFront
         run: |
