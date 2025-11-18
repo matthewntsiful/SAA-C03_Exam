@@ -65,23 +65,5 @@ class ExamProgress {
 document.addEventListener('DOMContentLoaded', () => {
     window.examProgress = new ExamProgress();
     
-    // Demo data for testing
-    if (Object.keys(window.examProgress.progress).length === 0) {
-        window.examProgress.updateExamProgress('1', 85, true);
-        window.examProgress.updateExamProgress('3', 65, true);
-        window.examProgress.updateExamProgress('5', 0, false);
-        
-        // Add demo recent exams
-        const recentExams = [
-            { id: '5', title: 'Exam 5', startTime: new Date().toISOString(), lastAccessed: new Date().toISOString() },
-            { id: '2', title: 'Exam 2', startTime: new Date(Date.now() - 3600000).toISOString(), lastAccessed: new Date(Date.now() - 3600000).toISOString() }
-        ];
-        localStorage.setItem('recentExams', JSON.stringify(recentExams));
-        
-        // Force show recent exams section
-        setTimeout(() => {
-            const section = document.getElementById('recent-exams-section');
-            if (section) section.style.display = 'block';
-        }, 100);
-    }
+
 });
