@@ -380,8 +380,8 @@
             }
 
             showReview() {
-                const progress = JSON.parse(localStorage.getItem('examProgress') || '{}');
-                const results = progress[EXAM_ID]?.results || [];
+                const progress = JSON.parse(localStorage.getItem('examProgress') || '{}')
+                const results = progress[EXAM_ID]?.results || []
                 
                 document.getElementById('resultsContainer').innerHTML = `
                     <div class="mb-8">
@@ -392,8 +392,8 @@
                     </div>
                     <div class="space-y-6">
                         ${this.questions.map((q, i) => {
-                            const result = results[i];
-                            const isCorrect = result?.correct;
+                            const result = results[i]
+                            const isCorrect = result?.correct
                             return `
                                 <div class="border-2 ${isCorrect ? 'border-green-500' : 'border-red-500'} rounded-lg p-6">
                                     <div class="flex items-start justify-between mb-4">
@@ -406,8 +406,8 @@
                                     <p class="text-lg mb-4">${q.text}</p>
                                     <div class="space-y-2 mb-4">
                                         ${Object.entries(q.options).map(([letter, text]) => {
-                                            const isUserAnswer = Array.isArray(result?.userAnswer) ? result.userAnswer.includes(letter) : result?.userAnswer === letter;
-                                            const isCorrectAnswer = q.correct.includes(letter);
+                                            const isUserAnswer = Array.isArray(result?.userAnswer) ? result.userAnswer.includes(letter) : result?.userAnswer === letter
+                                            const isCorrectAnswer = q.correct.includes(letter)
                                             let bgColor = '';
                                             if (isCorrectAnswer) bgColor = 'bg-green-100 dark:bg-green-900/20 border-green-500';
                                             else if (isUserAnswer) bgColor = 'bg-red-100 dark:bg-red-900/20 border-red-500';
@@ -418,19 +418,40 @@
                                                     ${isCorrectAnswer ? ' <span class="text-green-600 dark:text-green-400 font-medium">✓ Correct</span>' : ''}
                                                     ${isUserAnswer && !isCorrectAnswer ? ' <span class="text-red-600 dark:text-red-400 font-medium">✗ Your answer</span>' : ''}
                                                 </div>
-                                            `;
-                                        }).join('')}
+                                            `
+                                        }).join('')}  
                                     </div>
+                                    ${!isCorrect && q.explanation ? `
+                                        <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg">
+                                            <div class="flex items-start gap-2 mb-2">
+                                                <span class="text-xl">📚</span>
+                                                <h4 class="font-semibold text-blue-900 dark:text-blue-300">Learn More</h4>
+                                            </div>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">${q.explanation}</p>
+                                            ${q.resources && q.resources.length > 0 ? `
+                                                <div class="space-y-2">
+                                                    ${q.resources.map(r => `
+                                                        <a href="${r.url}" target="_blank" class="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                                                            <span>${r.type}</span>
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                                            </svg>
+                                                        </a>
+                                                    `).join('')}  
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    ` : ''}
                                 </div>
-                            `;
-                        }).join('')}
+                            `
+                        }).join('')}  
                     </div>
                     <div class="mt-8 flex gap-4 justify-center">
                         <button onclick="location.reload()" class="px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:scale-105 transition-transform">Retake Exam</button>
                         <a href="/" class="px-8 py-3 border-2 border-gray-300 dark:border-gray-700 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors inline-block">Back to Exams</a>
                     </div>
-                `;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                `
+                window.scrollTo({ top: 0, behavior: 'smooth' })
             }
         }
 
