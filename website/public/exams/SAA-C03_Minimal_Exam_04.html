@@ -507,11 +507,24 @@
         let exam = null;
         document.addEventListener('DOMContentLoaded', () => {
             exam = new MinimalExam(examQuestions);
-        // Spacebar pause/resume
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space' && !e.target.matches('input, textarea, button')) {
+            // Ignore if typing in input fields
+            if (e.target.matches('input, textarea, button')) return;
+            
+            // Spacebar pause/resume
+            if (e.code === 'Space') {
                 e.preventDefault();
                 exam.toggleTimer();
+            }
+            // Arrow keys for navigation
+            else if (e.code === 'ArrowLeft') {
+                e.preventDefault();
+                exam.prev();
+            }
+            else if (e.code === 'ArrowRight') {
+                e.preventDefault();
+                exam.next();
             }
         });
         });
