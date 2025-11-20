@@ -441,9 +441,9 @@
                                                 <h4 class="font-semibold text-blue-900 dark:text-blue-300">Learn More</h4>
                                             </div>
                                             ${q.explanation ? `<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">${q.explanation}</p>` : ""}
-                                            ${topicResources.length > 0 ? `
+                                            ${q.resources && q.resources.length > 0 ? `
                                                 <div class="space-y-2">
-                                                    ${topicResources.map(r => `
+                                                    ${q.resources.map(r => `
                                                         <a href="${r.url}" target="_blank" class="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline">
                                                             <span>${r.type}</span>
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
