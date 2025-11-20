@@ -13,9 +13,12 @@
 ### 🎯 Exam Features
 - **16 Complete Practice Exams** (1,040 questions total)
 - **130-Minute Timer** per exam (matches real conditions)
+- **Study Mode** (no timer, instant feedback, learning resources)
 - **Auto-Save Progress** (resume within 4 hours)
 - **Question Navigation** (jump to any question)
+- **Keyboard Navigation** (arrow keys, spacebar pause/resume)
 - **Flag Questions** for review
+- **Social Media Sharing** (X, LinkedIn, Facebook, Reddit, WhatsApp, Telegram)
 - **Dark Mode** support
 - **Mobile Responsive** design
 
@@ -26,6 +29,7 @@
 - **Answer Review** (see correct/incorrect answers)
 - **Exam History** (track all attempts)
 - **Difficulty Levels** (Easy → Expert)
+- **Central Resources System** (AWS Docs, Tutorials, Videos per topic)
 
 ### 🏗️ Infrastructure
 - **Terraform IaC** (S3, CloudFront, Route53, WAF, CloudWatch)
@@ -109,10 +113,13 @@ SAA-C03_Exam/
 ## 🎓 Usage
 
 1. **Take Exams** - Click any exam card to start
-2. **Track Progress** - View analytics dashboard
-3. **Review Answers** - See detailed explanations
-4. **Retake Exams** - Improve your scores
-5. **Monitor Performance** - Track improvement over time
+2. **Study Mode** - Toggle for learning (instant feedback, no timer)
+3. **Keyboard Navigation** - Use arrow keys (←/→) and spacebar
+4. **Track Progress** - View analytics dashboard
+5. **Review Answers** - See detailed explanations with resources
+6. **Share Results** - Post scores to social media
+7. **Retake Exams** - Improve your scores
+8. **Monitor Performance** - Track improvement over time
 
 ## 🛠️ Tech Stack
 
@@ -150,6 +157,9 @@ SAA-C03_Exam/
 |--------|-------|
 | Exams | 16 |
 | Questions | 1,040 |
+| Study Mode | ✅ |
+| Keyboard Navigation | ✅ |
+| Social Sharing | ✅ |
 | Pass Rate Tracking | ✅ |
 | Progress Saving | ✅ |
 | Mobile Support | ✅ |
@@ -272,9 +282,9 @@ Contributions welcome for:
 ---
 
 **Status**: ✅ Production Ready & Deployed  
-**Version**: 2.1.0  
+**Version**: 2.2.0  
 **Infrastructure**: Terraform 1.9+ | AWS Provider 6.20  
 **Runtime**: Node.js 18+ | Express 4.18+  
-**Last Updated**: December 2024
+**Last Updated**: January 2025
 
 **Good luck with your AWS certification! 🎉**
