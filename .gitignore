@@ -30,3 +30,9 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Architecture Diagrams (track these!)
+# Ensure diagram files are committed
+!docs/architecture/*.png
+!docs/architecture/*.svg
+!docs/architecture/source/*.drawio

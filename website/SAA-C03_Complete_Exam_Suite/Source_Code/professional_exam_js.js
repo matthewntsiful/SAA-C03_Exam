@@ -190,7 +190,7 @@ class ProfessionalSAAExam {
             
             <div class="question-text-content">
                 ${question.text}
-                ${isMultiple ? '<div style="background: #e8f4fd; padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-weight: 600; color: #4a90e2;"><strong>📝 Note:</strong> This question may have multiple correct answers. Select all that apply.</div>' : ''}
+                ${isMultiple ? `<div style="background: #e8f4fd; padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-weight: 600; color: #4a90e2;"><strong>📝 Note:</strong> Choose ${question.correct.split(',').length > 1 ? question.correct.split(',').length : question.correct.length} answers.</div>` : ''}
             </div>
             
             <div class="options-section">

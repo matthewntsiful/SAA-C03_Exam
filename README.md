@@ -94,7 +94,9 @@ SAA-C03_Exam/
 │       └── backend/           # Remote state setup
 ├── .github/workflows/         # CI/CD pipeline
 ├── docs/                      # Documentation
+│   ├── architecture/         # Architecture diagrams
 │   ├── FEATURES.md           # Complete feature list
+│   ├── ARCHITECTURE.md       # System architecture
 │   ├── DEPLOYMENT.md         # Deployment guide
 │   └── PROJECT_STRUCTURE.md  # Detailed structure
 ├── scripts-legacy/            # Legacy Python utilities
@@ -105,6 +107,7 @@ SAA-C03_Exam/
 ## 📚 Documentation
 
 - **[Features](docs/FEATURES.md)** - Complete feature list
+- **[Architecture](docs/ARCHITECTURE.md)** - System architecture & diagrams
 - **[Deployment](docs/DEPLOYMENT.md)** - Deployment guide
 - **[CI/CD Pipeline](docs/CICD.md)** - Automated deployment
 - **[Structure](docs/PROJECT_STRUCTURE.md)** - Project organization

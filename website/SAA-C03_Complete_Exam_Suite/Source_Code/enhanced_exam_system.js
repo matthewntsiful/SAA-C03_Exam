@@ -173,7 +173,7 @@ class EnhancedSAAExam {
             
             <div class="question-text-content enhanced">
                 ${question.text}
-                ${isMultiple ? '<div class="multiple-choice-notice">📝 <strong>Note:</strong> This question may have multiple correct answers. Select all that apply.</div>' : ''}
+                ${isMultiple ? `<div class="multiple-choice-notice">📝 <strong>Note:</strong> Choose ${question.correct.split(',').length > 1 ? question.correct.split(',').length : question.correct.length} answers.</div>` : ''}
             </div>
             
             <div class="confidence-section">
