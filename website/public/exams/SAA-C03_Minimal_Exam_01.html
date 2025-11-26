@@ -602,14 +602,14 @@
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             // Ignore if typing in input fields
-            if (e.target.matches('input, textarea, button')) return;
+            if (e.target.matches('input, textarea')) return;
             
-            // Spacebar pause/resume
+            // Spacebar pause/resume only
             if (e.code === 'Space') {
                 e.preventDefault();
                 exam.toggleTimer();
             }
-            // Arrow keys for navigation
+            // Arrow keys for question navigation only
             else if (e.code === 'ArrowLeft') {
                 e.preventDefault();
                 exam.prev();

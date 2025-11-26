@@ -603,7 +603,7 @@
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             // Ignore if typing in input fields
-            if (e.target.matches('input, textarea, button')) return;
+            if (e.target.matches('input, textarea')) return;
             
             // Spacebar pause/resume
             if (e.code === 'Space') {
