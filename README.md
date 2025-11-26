@@ -16,7 +16,7 @@
 - **Study Mode** (no timer, instant feedback, learning resources)
 - **Auto-Save Progress** (resume within 4 hours)
 - **Question Navigation** (jump to any question)
-- **Keyboard Navigation** (arrow keys, spacebar pause/resume)
+- **Keyboard Navigation** (arrow keys for questions only, spacebar for pause/resume only)
 - **Flag Questions** for review
 - **Social Media Sharing** (X, LinkedIn, Facebook, Reddit, WhatsApp, Telegram)
 - **Dark Mode** support
@@ -117,7 +117,7 @@ SAA-C03_Exam/
 
 1. **Take Exams** - Click any exam card to start
 2. **Study Mode** - Toggle for learning (instant feedback, no timer)
-3. **Keyboard Navigation** - Use arrow keys (←/→) and spacebar
+3. **Keyboard Navigation** - Arrow keys (←/→) navigate questions, spacebar pauses/resumes timer
 4. **Track Progress** - View analytics dashboard
 5. **Review Answers** - See detailed explanations with resources
 6. **Share Results** - Post scores to social media
@@ -285,7 +285,7 @@ Contributions welcome for:
 ---
 
 **Status**: ✅ Production Ready & Deployed  
-**Version**: 2.2.0  
+**Version**: 2.3.0  
 **Infrastructure**: Terraform 1.9+ | AWS Provider 6.20  
 **Runtime**: Node.js 18+ | Express 4.18+  
 **Last Updated**: January 2025
