@@ -32,15 +32,19 @@
 - **Central Resources System** (AWS Docs, Tutorials, Videos per topic)
 
 ### 🏗️ Infrastructure
-- **Terraform IaC** (S3, CloudFront, Route53, WAF, CloudWatch)
-- **Remote State Management** (S3 + DynamoDB locking)
-- **Security Best Practices** (encryption, versioning, logging)
-- **Monitoring & Alerts** (CloudWatch alarms)
-- **Cost Optimized** (lifecycle policies)
-- **CI/CD Pipeline** (GitHub Actions)
-- **Automated Deployments** (dev/prod)
-- **AWS Deployment** ready
-- **Scalable** architecture
+
+![Architecture Diagram](docs/architecture/diagram.png)
+
+**Serverless Architecture Components:**
+- **Frontend & CDN**: Route53 → CloudFront → S3 (static hosting)
+- **Security Layer**: AWS WAF (rate limiting + managed rules)
+- **Content Delivery**: CloudFront OAC with compression (Brotli + Gzip)
+- **Storage**: S3 buckets (content + access logs with lifecycle policies)
+- **Infrastructure as Code**: Terraform with remote state (S3 + DynamoDB locking)
+- **CI/CD Pipeline**: GitHub Actions with OIDC authentication
+- **Monitoring**: CloudWatch alarms + access logging
+- **Multi-Environment**: Automated dev/prod deployments
+- **Cost Optimized**: ~$6.50/month with lifecycle policies
 
 ## 🚀 Quick Start
 
@@ -108,6 +112,7 @@ SAA-C03_Exam/
 
 - **[Features](docs/FEATURES.md)** - Complete feature list
 - **[Architecture](docs/ARCHITECTURE.md)** - System architecture & diagrams
+- **[Architecture Diagram](docs/architecture/diagram.png)** - Visual system overview
 - **[Deployment](docs/DEPLOYMENT.md)** - Deployment guide
 - **[CI/CD Pipeline](docs/CICD.md)** - Automated deployment
 - **[Structure](docs/PROJECT_STRUCTURE.md)** - Project organization
